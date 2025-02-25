@@ -9,6 +9,4 @@ runs:
     - name: Debug Inputs
       shell: bash
       run: |
-        echo "COMPANY is: '${{COMPANY}}'"
-      env:
-        COMPANY: ${{ inputs.COMPANY }}
+        echo ${{ inputs.COMPANY }}
