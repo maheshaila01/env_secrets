@@ -1,12 +1,14 @@
 inputs:
   COMPANY:
+    type: string
     required: true
 
 runs:
   using: "composite"
   steps:
-    - name: Test Print
+    - name: Debug Inputs
       shell: bash
-      run: echo "$COMPANY"
+      run: |
+        echo "COMPANY is: '${COMPANY}'"
       env:
         COMPANY: ${{ inputs.COMPANY }}
