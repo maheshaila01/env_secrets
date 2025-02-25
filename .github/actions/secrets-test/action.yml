@@ -1,6 +1,5 @@
 inputs:
   COMPANY:
-    type: string
     required: true
 
 runs:
