@@ -2,11 +2,24 @@ inputs:
   COMPANY:
     type: string
     required: true
+  branch_name: 
+    type: string
+    required: true
 
 runs:
   using: "composite"
   steps:
-    - name: Debug Inputs
-      shell: bash
+    # - name: Debug Inputs
+    #   shell: bash
+    #   run: |
+    #     echo ${{ branch_name }}
+    #     echo ${{ inputs.COMPANY }}
+
+    - name: "check"
+      shell: powershell
       run: |
-        echo ${{ inputs.COMPANY }}
+          if ("${{ inputs.branch-name }}" -eq "main") {
+            $repository = "release"
+          } else {
+            $repository = "done"
+          }
