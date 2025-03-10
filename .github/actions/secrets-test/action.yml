@@ -15,11 +15,16 @@ runs:
     #     echo ${{ branch_name }}
     #     echo ${{ inputs.COMPANY }}
 
+    - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch-name}}
+          
     - name: "check"
       shell: powershell
       run: |
-          Write-Host "Branch name: ${{ git rev-parse --abbrev-ref HEAD }}"
-          if ("${{ git rev-parse --abbrev-ref HEAD }}" -eq "main") {
+          Write-Host "Branch name: ${{ github.head_ref }}"
+          if ("${{ github.head_ref }}" -eq "main") {
             $repository = "release"
           } else {
             $repository = "done"
