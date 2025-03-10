@@ -18,8 +18,8 @@ runs:
     - name: "check"
       shell: powershell
       run: |
-          Write-Host "Branch name: ${{ inputs.branch-name }}"
-          if (${{ inputs.branch-name }} -eq "main") {
+          Write-Host "Branch name: ${{ github.ref }}"
+          if ("${{ github.ref }}" -eq "main") {
             $repository = "release"
           } else {
             $repository = "done"
