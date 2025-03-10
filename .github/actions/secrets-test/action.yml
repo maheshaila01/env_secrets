@@ -16,9 +16,9 @@ runs:
     #     echo ${{ inputs.COMPANY }}
 
     - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.branch-name}}
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch-name}}
           
     - name: "check"
       shell: powershell
