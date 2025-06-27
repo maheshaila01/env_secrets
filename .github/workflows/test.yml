@@ -20,12 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branch-name}}
-      
-      - name: test-secret
-        uses: maheshaila01/env_secrets/.github/actions/secrets-test@main
-        with:
-          COMPANY: ${{VARS.COMPANY }}
-          branch_name: ${{inputs.branch_name}}
+    
           
       - name: 🚀 Push Docker Image To Jfrog
         id: build-and-push-docker-image
