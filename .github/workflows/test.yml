@@ -1,0 +1,40 @@
+name : Secrets Passthrough
+
+on: 
+  workflow_call:
+    inputs:
+      branch_name: 
+        type: string
+        required: true
+      environment: 
+        type: string
+        required: true
+
+jobs:
+
+  execution_steps:
+    runs-on: windows-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch-name}}
+      
+      - name: test-secret
+        uses: maheshaila01/env_secrets/.github/actions/secrets-test@main
+        with:
+          COMPANY: ${{VARS.COMPANY }}
+          branch_name: ${{inputs.branch_name}}
+          
+      - name: 🚀 Push Docker Image To Jfrog
+        id: build-and-push-docker-image
+        run: |
+            $branchName = '${{ inputs.branch-name }}'
+            if ($branchName -eq 'main' -or $branchName.Contains('release/')) {
+              $repository = "release"
+            } else {
+              $repository = "${{ inputs.environment }}"
+            }
+             Write-Output "📦 Repository selected: $repository"
+        shell: powershell
