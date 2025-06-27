@@ -31,5 +31,5 @@ jobs:
             } else {
               $repository = "${{ inputs.environment }}"
             }
-             Write-Output "📦 Repository selected: $repository"
+             Write-Output $repository
         shell: powershell
