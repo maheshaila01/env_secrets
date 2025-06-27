@@ -26,7 +26,7 @@ jobs:
         id: build-and-push-docker-image
         run: |
             $branchName = '${{ inputs.branch-name }}'
-            if ($branchName -eq 'main' -or $branchName.Contains('release/')) {
+            if ($branchName -eq 'main' -or $branchName.Contains('release')) {
               $repository = "release"
             } else {
               $repository = "${{ inputs.environment }}"
