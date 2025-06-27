@@ -3,7 +3,7 @@ name : Secrets Passthrough
 on: 
   workflow_call:
     inputs:
-      branch_name: 
+      branch-name: 
         type: string
         required: true
       environment: 
